@@ -22,7 +22,7 @@ export default {
 
   data () {
     return {
-      msg: 'Timeline Twitter',
+      msg: 'Timeline Zinedine Twitter',
       tweets: [],
       loading: true
     }

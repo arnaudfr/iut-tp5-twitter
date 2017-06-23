@@ -10,7 +10,7 @@
     <div>
       <ul>
         <li class="button"><icon name="reply"/></li>
-        <li class="button"><icon name="retweet"/></li>
+        <a @click="retweet(tweet.id)"><li class="button"><icon name="retweet"/> <span></span></li></a>
         <li class="button"><icon name="heart"/></li>
         <li class="button"><icon name="envelope"/></li>
       </ul>
