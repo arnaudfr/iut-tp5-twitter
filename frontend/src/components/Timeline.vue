@@ -19,7 +19,7 @@ export default {
       msg: 'Timeline Twitter',
       tweets: [
       { auteur: 'John Doe', contenu: 'A girl is no one' },
-      { auteur: 'Barack Obama', contenu: 'Zinedine Zidane est le plus grand homme que cette terre ait porté' },
+      { auteur: 'Barack Obama', contenu: 'Zinedine Zidane is the raddiest man in the world.' },
       { auteur: 'George Orwell', contenu: 'We are watching' }]
     }
   }
