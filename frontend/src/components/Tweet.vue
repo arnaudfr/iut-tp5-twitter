@@ -29,7 +29,7 @@ import Icon from 'vue-awesome/components/Icon'
 export default {
   components: {Icon},
   name: 'tweet',
-  props: ['tweet'],
+  props: ['tweet', 'current_user'],
   methods: {
     moment: function (date) {
       return moment(date)
@@ -37,7 +37,7 @@ export default {
 
     retweet: function (id) {
       var data = new FormData()
-      data.append('utilisateur', 'johndoe')
+      data.append('utilisateur', this.current_user)
       data.append('tweet', id)
 
       this.$http.post('http://localhost:8080/retweet', data).then(response => {

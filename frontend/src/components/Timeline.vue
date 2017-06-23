@@ -5,7 +5,7 @@
     <p> Utilisateur connecté : {{ current_user }} </p>
     <div v-if="loading">Chargement des tweets en cours…</div>
     <div v-else>
-      <feed :tweets="tweets" @retweeted="retweet" />
+      <feed :tweets="tweets" :current_user="current_user" @retweeted="retweet" />
     </div>
   </div>
 </template>
@@ -64,13 +64,14 @@ export default {
     retweet: function (id) {
       for (var i = 0; i <= this.tweets.length; i++) {
         if (this.tweets[i].id === id) {
-          this.tweets[i].retweeters.push('johndoe')
+          this.tweets[i].retweeters.push(this.current_user)
         }
       }
     },
 
     connected_user: function (user) {
       this.current_user = user
+      this.$emit('cur_user', user)
     }
   }
 }
