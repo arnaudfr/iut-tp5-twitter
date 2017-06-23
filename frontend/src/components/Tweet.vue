@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ tweet.auteur }} - {{ tweet.contenu }}
+    {{ tweet.auteur.prenom }} {{ tweet.auteur.nom }} - {{ tweet.contenu }}
   </div>
 </template>
 
