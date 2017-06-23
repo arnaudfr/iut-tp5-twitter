@@ -6,13 +6,20 @@
        {{ utilisateur.prenom }} {{ utilisateur.nom }}
      </option>
     </select>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'utilisateur',
-  props: ['utilisateurs']
+  props: ['utilisateurs'],
+  methods: {
+    onChange: function (user) {
+      this.current_user = user
+      this.$emit('cur_user', user)
+    }
+  }
 }
 </script>
 

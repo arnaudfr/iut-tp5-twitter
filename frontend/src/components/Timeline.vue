@@ -1,7 +1,8 @@
 <template>
   <div class="timeline">
     <h1>{{ msg }}</h1>
-    <Utilisateur :utilisateurs="utilisateurs"/>
+    <Utilisateur :utilisateurs="utilisateurs" @cur_user="connected_user"/>
+    <p> Utilisateur connecté : {{ current_user }} </p>
     <div v-if="loading">Chargement des tweets en cours…</div>
     <div v-else>
       <feed :tweets="tweets" @retweeted="retweet" />
@@ -27,6 +28,7 @@ export default {
       msg: 'Timeline Zinedine Twitter',
       utilisateurs: [],
       tweets: [],
+      current_user: 'No one',
       loading: true
     }
   },
@@ -65,6 +67,10 @@ export default {
           this.tweets[i].retweeters.push('johndoe')
         }
       }
+    },
+
+    connected_user: function (user) {
+      this.current_user = user
     }
   }
 }
