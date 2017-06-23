@@ -1,7 +1,7 @@
 <template>
-  <div class="feed">
+  <div>
     <ul>
-      <li v-for="tweet in tweets">
+      <li v-for="tweet in tweets" class="tweet">
         <tweet :tweet="tweet"/>
       </li>
     </ul>
@@ -19,18 +19,27 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
+
   ul {
     list-style-type: none;
     padding: 0;
   }
+
   li {
     display: block;
     margin: 0 10px;
   }
-  a {
-    color: #42b983;
+
+  li.tweet:first-child {
+   border-top-width: 1px;
   }
+
+  li.tweet {
+   border-style: solid;
+   border-width: 0 1px 1px 1px;
+   border-color: gray;
+   width: 500px;
+   margin: auto;
+  }
+
 </style>
