@@ -1,7 +1,10 @@
 <template>
   <div class="timeline">
     <h1>{{ msg }}</h1>
-    <feed :tweets="tweets"/>
+    <div v-if="loading">Chargement des tweets en cours…</div>
+    <div v-else>
+      <feed :tweets="tweets"/>
+    </div>
   </div>
 </template>
 
@@ -20,7 +23,8 @@ export default {
   data () {
     return {
       msg: 'Timeline Twitter',
-      tweets: []
+      tweets: [],
+      loading: true
     }
   },
 
@@ -34,9 +38,10 @@ export default {
       this.$http.get('http://localhost:8080/list').then(response => {
         // get body data
         this.tweets = response.body
+        this.loading = false
         console.log(response)
       }, response => {
-        this.tweets = { auteur: 'erreur', contenu: '0' }
+        this.loading = true
       })
     }
   }

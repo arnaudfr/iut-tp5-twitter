@@ -1,10 +1,10 @@
 <template>
   <div class="feed">
     <ul>
-        <li v-for="tweet in tweets">
-          <tweet :tweet="tweet"/>
-        </li>
-      </ul>
+      <li v-for="tweet in tweets">
+        <tweet :tweet="tweet"/>
+      </li>
+    </ul>
   </div>
 </template>
 
