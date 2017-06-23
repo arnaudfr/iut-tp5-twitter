@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
     <div v-if="loading">Chargement des tweets en cours…</div>
     <div v-else>
-      <feed :tweets="tweets"/>
+      <feed :tweets="tweets" @retweeted="retweet" />
     </div>
   </div>
 </template>
@@ -43,6 +43,14 @@ export default {
       }, response => {
         this.loading = true
       })
+    },
+
+    retweet: function (id) {
+      for (var i = 0; i <= this.tweets.length; i++) {
+        if (this.tweets[i].id === id) {
+          this.tweets[i].retweeters.push('johndoe')
+        }
+      }
     }
   }
 }

@@ -41,13 +41,16 @@ export default {
       data.append('tweet', id)
 
       this.$http.post('http://localhost:8080/retweet', data).then(response => {
+        this.$emit('retweeted', id)
       }, response => {})
-    },
-
-    created () {
-      moment.locale('fr')
     }
+
+  },
+
+  created () {
+    moment.locale('fr')
   }
+
 }
 </script>
 

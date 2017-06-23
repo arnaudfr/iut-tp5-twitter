@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li v-for="tweet in tweets" class="tweet">
-        <tweet :tweet="tweet"/>
+        <tweet :tweet="tweet" @retweeted="retweet"/>
       </li>
     </ul>
   </div>
@@ -13,7 +13,12 @@
   export default {
     name: 'feed',
     components: {Tweet},
-    props: ['tweets']
+    props: ['tweets'],
+    methods: {
+      retweet: function (id) {
+        this.$emit('retweeted', id)
+      }
+    }
   }
 </script>
 
