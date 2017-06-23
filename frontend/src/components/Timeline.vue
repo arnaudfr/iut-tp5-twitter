@@ -10,17 +10,38 @@
 </template>
 
 <script>
+
+// Imports
+import Vue from 'vue'
+import Resource from 'vue-resource'
 import Tweet from './Tweet'
+Vue.use(Resource)
+
 export default {
-  components: {Tweet},
   name: 'timeline',
+  components: {Tweet},
+
   data () {
     return {
       msg: 'Timeline Twitter',
-      tweets: [
-      { auteur: 'John Doe', contenu: 'A girl is no one' },
-      { auteur: 'Barack Obama', contenu: 'Zinedine Zidane is the raddiest man in the world.' },
-      { auteur: 'George Orwell', contenu: 'We are watching' }]
+      tweets: []
+    }
+  },
+
+  created () {
+    this.fetchTweets()
+  },
+
+  methods: {
+    fetchTweets: function () {
+      // GET /list
+      this.$http.get('http://localhost:8080/list').then(response => {
+        // get body data
+        this.tweets = response.body
+        console.log(response)
+      }, response => {
+        this.tweets = { auteur: 'erreur', contenu: '0' }
+      })
     }
   }
 }
