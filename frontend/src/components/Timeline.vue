@@ -1,6 +1,7 @@
 <template>
   <div class="timeline">
     <h1>{{ msg }}</h1>
+    <Utilisateur :utilisateurs="utilisateurs"/>
     <div v-if="loading">Chargement des tweets en cours…</div>
     <div v-else>
       <feed :tweets="tweets" @retweeted="retweet" />
@@ -12,17 +13,19 @@
 
 // Imports
 import Feed from './Feed'
+import Utilisateur from './Utilisateur'
 import Vue from 'vue'
 import Resource from 'vue-resource'
 Vue.use(Resource)
 
 export default {
   name: 'timeline',
-  components: {Feed},
+  components: {Feed, Utilisateur},
 
   data () {
     return {
       msg: 'Timeline Zinedine Twitter',
+      utilisateurs: [],
       tweets: [],
       loading: true
     }
@@ -30,6 +33,7 @@ export default {
 
   created () {
     this.fetchTweets()
+    this.fetchUsers()
   },
 
   methods: {
@@ -42,6 +46,16 @@ export default {
         console.log(response)
       }, response => {
         this.loading = true
+      })
+    },
+
+    fetchUsers: function () {
+      // GET /utilisateurs
+      this.$http.get('http://localhost:8080/utilisateurs').then(response => {
+        // get body data
+        this.utilisateurs = response.body
+      }, response => {
+      // error callback
       })
     },
 

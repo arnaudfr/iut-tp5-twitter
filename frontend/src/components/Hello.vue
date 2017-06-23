@@ -14,7 +14,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Bienvenu sur Twitter'
+      msg: 'Bienvenu sur Zindeine Twitter'
     }
   }
 }
