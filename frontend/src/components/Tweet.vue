@@ -1,4 +1,3 @@
-
 <template>
   <div>
     {{ tweet.auteur }} - {{ tweet.contenu }}
@@ -12,5 +11,5 @@ export default {
 }
 </script>
 
-<style scoed>
+<style scoped>
 </style>

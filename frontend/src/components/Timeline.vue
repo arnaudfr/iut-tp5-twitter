@@ -1,25 +1,21 @@
 <template>
   <div class="timeline">
     <h1>{{ msg }}</h1>
-    <ul>
-      <li v-for="tweet in tweets">
-        <tweet :tweet="tweet"/>
-      </li>
-    </ul>
+    <feed :tweets="tweets"/>
   </div>
 </template>
 
 <script>
 
 // Imports
+import Feed from './Feed'
 import Vue from 'vue'
 import Resource from 'vue-resource'
-import Tweet from './Tweet'
 Vue.use(Resource)
 
 export default {
   name: 'timeline',
-  components: {Tweet},
+  components: {Feed},
 
   data () {
     return {
