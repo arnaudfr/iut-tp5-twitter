@@ -10,7 +10,7 @@
     <div>
       <ul>
         <li class="button"><icon name="reply"/></li>
-        <li class="button"><a @click="retweet(tweet.id)"><icon name="retweet"/></a>
+        <li class="button"><a v-if="retweetable" @click="retweet(tweet.id)"><icon name="retweet"/></a>
         <span class="aside">{{ tweet.retweeters.length }}</span></li>
         <li class="button"><icon name="heart"/></li>
         <li class="button"><icon name="envelope"/></li>
@@ -44,6 +44,8 @@ export default {
         this.$emit('retweeted', id)
       }, response => {})
     }
+
+    //retweetable: function (
 
   },
 
